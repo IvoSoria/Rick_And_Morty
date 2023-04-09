@@ -1,19 +1,21 @@
 import React from "react";
 import SearchBar from "./SearchBar"
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
-function Nav({onSearch}) {
+function Nav(props) {
     return (
         <nav> 
-            <SearchBar onSearch={onSearch} />
+            <SearchBar onSearch={props.onSearch} />
             <button>
-              <Link to= "/about">About</Link>
+              <Link to= "/about"> About </Link>
             </button>
             <button>
-              <Link to= "/home">Home</Link>
+              <Link to= "/home"> Home </Link>
             </button>
-        </nav>
-       
+            <button onClick={props.logout}>
+              Log Out
+            </button>
+        </nav>    
     )
 }
 
