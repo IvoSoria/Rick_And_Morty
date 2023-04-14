@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar"
 import {Link} from "react-router-dom";
 
+
 function Nav(props) {
     return (
         <nav> 
@@ -11,6 +12,9 @@ function Nav(props) {
             </button>
             <button>
               <Link to= "/home"> Home </Link>
+            </button>
+            <button>
+              <Link to= "/favorites"> Favorites </Link>
             </button>
             <button onClick={props.logout}>
               Log Out
