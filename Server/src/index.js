@@ -1,8 +1,9 @@
 const express = require('express');
 const server = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const router = require('./routes/index');
 const morgan = require('morgan');
+const { conn } = require('./DB_connection');
 
 server.use(express.json());
 server.use(morgan('dev'));
@@ -23,7 +24,8 @@ server.use((req, res, next) => {
 
 server.use('/rickandmorty', router);
 
-server.listen(PORT, () => {
-   console.log('Server raised in port: ' + PORT);
+server.listen(PORT, async () => {
+   console.log(`Server raised in port: http://localhost:${PORT}`);
+  await conn.sync({ force: true });
 });
 
