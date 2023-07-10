@@ -1,21 +1,20 @@
 const router = require ("express").Router();
 const { getCharById } = require('../controllers/getCharById');
 const { login } = require('../controllers/login');
-const { postFav, deleteFav } = require('../controllers/handleFavorites');
+const { postFav } = require('../controllers/postFav');
+const { getFavs } = require('../controllers/getFavs');
+const { deleteFav } = require('../controllers/deleteFav');
+const { postUser } = require('../controllers/postUser');
 
-router.get('/character/:id', (req, res) => {
-    getCharById(req, res);
-});
+router.get('/character/:id', getCharById);
 
 router.get('/login', login);
 
-router.post('/fav', (req, res) => {
-    postFav(req, res);
-});
+router.post('/fav', postFav);
+router.get('fav', getFavs);
+router.delete('fav/:id', deleteFav);
 
-router.delete('/fav/:id', (req, res) => {
-    deleteFav(req, res);
-});
-
+router.get('/login', login);
+router.post('/login', postUser);
 
 module.exports = router;

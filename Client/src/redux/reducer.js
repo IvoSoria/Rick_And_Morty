@@ -1,6 +1,7 @@
 import { ADD_FAV, REMOVE_FAV, FILTER, ORDER } from "./actions.tips";
 
 const initialState = {
+  idUser: 0,
   myFavorites: [] ,
   allCharactersFav: []
 };
@@ -10,7 +11,8 @@ const reducer = (state = initialState, action) => {
     case ADD_FAV:
       return { 
         ...state,
-        myFavorites: action.payload, allCharacters: action.payload 
+        myFavorites: action.payload, 
+        allCharacters: action.payload 
     };
     case REMOVE_FAV:
       return {
@@ -34,6 +36,17 @@ const reducer = (state = initialState, action) => {
           ? allCharactersFavCopy.sort((a, b) => a.id - b.id)
           : allCharactersFavCopy.sort((a, b) => b.id - a.id)
     }
+    case "RESET" :
+      return { 
+        ...state,
+        myFavorites: state.allCharactersFav
+    }
+    case "LOGIN" :
+      return {
+        ...state,
+        idUser: action.payload
+      }
+
     default:
       return {...state };
   }
